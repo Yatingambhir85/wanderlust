@@ -14,9 +14,13 @@ pipeline{
       }
     }
     stage("Git Checkout"){
-      steps{
-          checkout scmGit(branches: [[name: '*/main']], extensions: [[$class: 'RelativeTargetDirectory', relativeTargetDir: 'backend']], userRemoteConfigs: [[url: 'https://github.com/Yatingambhir85/wanderlust/']])
-      } 
+      steps {
+                // Checkout code from the 'backend' folder
+                checkout([$class: 'GitSCM',
+                          branches: [[name: '*/main']],
+                          extensions: [[$class: 'RelativeTargetDirectory', relativeTargetDir: 'backend']],
+                          userRemoteConfigs: [[url: 'https://github.com/Yatingambhir85/wanderlust/']]])
+            } 
     }
     stage("SONAR-SCANNING"){
       steps{
