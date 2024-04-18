@@ -14,7 +14,7 @@ pipeline{
       }
     }
     stage("Git Checkout"){
-      steps steps {
+      steps {
                 // Checkout code from the repository, excluding certain directories
                 checkout([$class: 'GitSCM',
                           branches: [[name: '*/main']],
