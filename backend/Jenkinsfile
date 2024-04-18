@@ -22,7 +22,7 @@ pipeline{
     }
     stage("SONAR-SCANNING"){
       steps{
-        withSonarQubeEnv('sonar-serverrr'){
+        withSonarQubeEnv('sonar-server'){
           sh '$SONAR_HOME/bin/sonar-scanner -Dsonar.projectName=wanderlust-backend -Dsonar.projectKey=wanderlust-backend'
         }
       }
