@@ -15,7 +15,9 @@ pipeline{
     }
     stage("Git Checkout"){
       steps{
+        dir('frontend'){
           git branch:'main', url:'https://github.com/Yatingambhir85/wanderlust---Yatin'
+      }
       }
     }
     stage("SONAR-SCANNING"){
