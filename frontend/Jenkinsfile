@@ -18,7 +18,7 @@ pipeline{
                 // Checkout code from the repository, excluding certain directories
                 checkout([$class: 'GitSCM',
                           branches: [[name: '*/main']],
-                          extensions: [[$class: 'CheckoutOption', timeout: 1], [$class: 'CleanBeforeCheckout'], [$class: 'DisableRemotePoll'], [$class: 'SparseCheckoutPaths', sparseCheckoutPaths: [[path: 'frontend/']]]],
+                          extensions: [[$class: 'CheckoutOption', timeout: 1], [$class: 'DisableRemotePoll'], [$class: 'SparseCheckoutPaths', sparseCheckoutPaths: [[path: 'frontend/']]]],
                           userRemoteConfigs: [[url: 'https://github.com/Yatingambhir85/wanderlust/']]])
             } 
     }
