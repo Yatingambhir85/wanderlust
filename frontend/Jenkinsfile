@@ -1,0 +1,31 @@
+pipeline{
+  agent any 
+  tools{
+    jdk 'jdk17'
+    nodejs 'node18'
+  }
+  environment{
+    SONAR_HOME = tool 'sonar-scanner'
+  }
+  stages{
+    stage("Clean Workspace"){
+      steps{
+        cleanWs()
+      }
+    }
+    stage("Git Checkout"){
+      steps{
+        dir('frontend'){
+          git branch:'main', url:'https://github.com/Yatingambhir85/wanderlust---Yatin'
+      }
+      } 
+    }
+    stage("SONAR-SCANNING"){
+      steps{
+        withSonarQubeEnv('sonar-server'){
+          sh '$SONAR_HOME/bin/sonar-scanner -Dsonar.projectName=wanderlust-frontend -Dsonar.projectKey=wanderlust-frontend'
+        }
+      }
+    }
+  }
+}
