@@ -15,8 +15,10 @@ pipeline{
     }
     stage("Git Checkout"){
       steps{
-        git branch:'main', url:'https://github.com/Yatingambhir85/wanderlust---Yatin'
+        dir('backend'){
+          git branch:'main', url:'https://github.com/Yatingambhir85/wanderlust---Yatin'
       }
+      } 
     }
     stage("Static code analysis"){
       steps{
