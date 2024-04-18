@@ -29,5 +29,15 @@ pipeline{
         }
       }
     }
+    stage("Docker build"){
+      steps{
+        sh 'docker build -t wanderlust-backend .'
   }
+    }
+    stage("Docker deployment"){
+      steps{
+        sh 'docker run -itd --name wanderlust-backend-project -p 5000:5000 wanderlust-backend'
+      }
+    }
+}
 }
