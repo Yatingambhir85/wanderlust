@@ -36,7 +36,7 @@ pipeline{
     }
     stage("Docker deployment"){
       steps{
-        sh 'docker run -itd --name wanderlust-backend-project -p 5000:5000 wanderlust-backend'
+        sh 'docker run -itd --name wanderlust-backend-project -p 5000:5000 --network wanderlust-network wanderlust-backend'
       }
     }
 }
