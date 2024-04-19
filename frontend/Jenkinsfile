@@ -36,6 +36,7 @@ pipeline{
     }
   stage("Docker deployment"){
     steps{
+          sh 'docker stop wanderlust-frontend && docker rm wanderlust-frontend || true'
           sh ' docker run -itd --name wanderlust-frontend -p 5173:5173 --network wanderlust-network wanderlust-frontend-pro'
     }
   }
