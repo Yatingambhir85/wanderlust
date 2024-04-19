@@ -36,7 +36,7 @@ pipeline{
     }
   stage("Docker deployment"){
     steps{
-          sh ' docker run -itd --name wanderlust-frontend -p 5173:5173 wanderlust-frontend-pro'
+          sh ' docker run -itd --name wanderlust-frontend -p 5173:5173 --network wanderlust-network wanderlust-frontend-pro'
     }
   }
 }
